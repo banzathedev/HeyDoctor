@@ -1,8 +1,8 @@
-package com.proway.heydocapp
+package com.proway.heydocapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.proway.heydocapp.ui.main.MainFragment
+import com.proway.heydocapp.R
 
 class MainActivity : AppCompatActivity() {
 
