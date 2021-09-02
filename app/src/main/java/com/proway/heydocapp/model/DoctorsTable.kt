@@ -1,16 +1,15 @@
 package com.proway.heydocapp.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import androidx.room.*
 
+@Entity
 data class DoctorsTable(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name= "Doctors_id")
     val id : Int,
     @ColumnInfo(name= "Doctors_name")
     val name: String,
+
 
     val specialtiesTableFK: Int
 )
