@@ -11,7 +11,7 @@ data class DoctorsTable(
     val name: String,
 
 
-    val specialtiesTableFK: Int
+    var specialtiesTableFK: Int
 )
 
 

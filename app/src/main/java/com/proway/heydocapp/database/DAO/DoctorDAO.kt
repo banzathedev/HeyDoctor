@@ -11,12 +11,17 @@ interface DoctorDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDoctor(doctor: DoctorsTable)
 
-    @Transaction
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertDoctorWithSp(docPlus: DoctorWithSpecialties)
+    fun insertDoctor(docWithSpecialties: DoctorWithSpecialties){
+        if(docWithSpecialties.specialties != null){
+            docWithSpecialties.doctor?.specialtiesTableFK = docWithSpecialties.specialties.id
+            docWithSpecialties.doctor?.let { insertDoctor(it) }
+        } else {
+            docWithSpecialties.doctor?.let {insertDoctor(it)}
+        }
+    }
 
     @Query("SELECT * FROM DoctorsTable WHERE Doctors_id = :id")
-    fun getDocById(id: Int): PatientsTable
+    fun getDocById(id: Int): DoctorsTable
 
     @Query("SELECT * FROM DoctorsTable")
     fun getAllDoctors(): List<DoctorsTable>

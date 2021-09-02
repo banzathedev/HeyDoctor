@@ -1,8 +1,6 @@
 package com.proway.heydocapp.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity
 data class PatientsTable(
@@ -15,4 +13,18 @@ data class PatientsTable(
     val age: Int,
     @ColumnInfo(name = "Patient_sex")
     val sex: String,
+
+    @ColumnInfo(name = "doctorIdFk")
+    var doctorIdFk : Int
+)
+
+data class PatientsWithDoctors(
+    @Embedded
+    val patient: PatientsTable?,
+    @Relation(
+        parentColumn = "doctorIdFk",
+        entityColumn = "Doctors_id"
+    )
+    val doctor: DoctorsTable?
+
 )
