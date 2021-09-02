@@ -24,7 +24,6 @@ interface PatientDao {
     @Delete
     fun deleteDoctor(Patient: PatientsTable)
 
-
 }
 
 
