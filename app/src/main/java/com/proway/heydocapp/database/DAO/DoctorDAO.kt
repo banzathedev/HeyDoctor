@@ -19,7 +19,7 @@ interface DoctorDAO {
     fun getDocById(id: Int): PatientsTable
 
     @Query("SELECT * FROM DoctorsTable")
-    fun getAllDoctors(id: Int): List<DoctorsTable>
+    fun getAllDoctors(): List<DoctorsTable>
 
     @Query("SELECT * FROM DoctorsTable")
     fun getDocWithSp(): List<DoctorWithSpecialties> //for now this guy its just for test
