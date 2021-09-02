@@ -7,7 +7,6 @@ import com.google.common.truth.Truth.assertThat
 import com.proway.heydocapp.database.AppDataBase
 
 import com.proway.heydocapp.database.DAO.PatientDao
-import com.proway.heydocapp.model.DoctorsTable
 import com.proway.heydocapp.model.PatientsTable
 import org.junit.After
 import org.junit.Before
