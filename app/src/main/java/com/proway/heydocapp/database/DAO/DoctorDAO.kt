@@ -3,7 +3,7 @@ package com.proway.heydocapp.database.DAO
 import androidx.room.*
 import com.proway.heydocapp.model.DoctorWithSpecialties
 import com.proway.heydocapp.model.DoctorsTable
-import com.proway.heydocapp.model.PatientWithDoctorTable
+
 import com.proway.heydocapp.model.PatientsTable
 
 @Dao

@@ -1,6 +1,4 @@
 package com.proway.heydocapp.database.DAO
-
-import android.provider.SyncStateContract.Helpers.insert
 import androidx.room.*
 import com.proway.heydocapp.model.PatientWithDoctorTable
 import com.proway.heydocapp.model.PatientsTable
@@ -24,7 +22,7 @@ interface PatientDao {
     fun getPatientsWithDoctor(): List<PatientWithDoctorTable>
 
     @Delete
-    fun deletePatient(Patient: PatientsTable)
+    fun deleteDoctor(Patient: PatientsTable)
 
 
 }
