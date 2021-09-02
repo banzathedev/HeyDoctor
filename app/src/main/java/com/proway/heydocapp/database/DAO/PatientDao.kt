@@ -23,6 +23,10 @@ interface PatientDao {
     @Query("SELECT * FROM PatientsTable")
     fun getPatientsWithDoctor(): List<PatientWithDoctorTable>
 
+    @Delete
+    fun deletePatient(Patient: PatientsTable)
+
+
 }
 
 
