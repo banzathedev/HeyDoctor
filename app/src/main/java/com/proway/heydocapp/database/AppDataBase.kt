@@ -8,12 +8,12 @@ import com.proway.heydocapp.database.DAO.DoctorDAO
 import com.proway.heydocapp.database.DAO.PatientDao
 import com.proway.heydocapp.database.DAO.SpecialtiesDAO
 import com.proway.heydocapp.model.DoctorsTable
-import com.proway.heydocapp.model.PatientWithDoctorTable
+
 import com.proway.heydocapp.model.PatientsTable
 import com.proway.heydocapp.model.SpecialtiesTable
 
 @Database(
-    entities = [DoctorsTable::class, PatientsTable::class, PatientWithDoctorTable::class, SpecialtiesTable::class],
+    entities = [DoctorsTable::class, PatientsTable::class, SpecialtiesTable::class],
     version = 1
 )
 abstract class AppDataBase : RoomDatabase() {

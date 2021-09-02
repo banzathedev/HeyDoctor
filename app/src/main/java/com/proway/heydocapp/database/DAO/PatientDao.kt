@@ -11,12 +11,12 @@ interface PatientDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPatient(patient: PatientsTable)
 
-    fun inserPatient(patientWithDoctor: PatientsWithDoctors) {
+    fun insertPatient(patientWithDoctor: PatientsWithDoctors) {
         if (patientWithDoctor.doctor != null) {
             patientWithDoctor.patient?.doctorIdFk = patientWithDoctor.doctor.id
-            patientWithDoctor?.let { inserPatient(it) }
+            patientWithDoctor?.let { insertPatient(it) }
         } else {
-            patientWithDoctor?.let { inserPatient(it) }
+            patientWithDoctor?.let { insertPatient(it) }
         }
     }
 

@@ -34,9 +34,33 @@ class DoctorDaoTest {
     }
     @Test
     fun test_insert_must_return_true(){
-        val docModel = DoctorsTable(0,"Doc testTUdo", 0)
+        val docModel = DoctorsTable(1,"Doc testTUdo", 0)
         dao.insertDoctor(docModel)
         val docs = dao.getAllDoctors()
+
+        assertThat(docs).contains(docModel)
+    }
+    @Test
+    fun test_insertDocWithSpecialties_must_return_true(){
+        val docModel = DoctorsTable(1,"Doc testTUdo", 1)
+        dao.insertDoctor(docModel)
+        val docs = dao.getAllDoctors()
+
+        assertThat(docs).contains(docModel)
+    }
+    @Test
+    fun test_getDocById_must_return_true(){
+        val docModel = DoctorsTable(1,"Doc testTUdo", 1)
+        dao.insertDoctor(docModel)
+        val docs = dao.getDocById(1)
+
+        assertThat(docs).isEqualTo(docModel)
+    }
+    @Test
+    fun test_getDoctorsWithCategories_must_return_true(){
+        val docModel = DoctorsTable(1,"Doc testTUdo", 1)
+        dao.insertDoctor(docModel)
+        val docs = dao.getDocWithSp()
 
         assertThat(docs).contains(docModel)
     }
