@@ -1,7 +1,7 @@
 package com.proway.heydocapp.model
 
 import androidx.room.ColumnInfo
-import androidx.room.ForeignKey
+
 import androidx.room.Relation
 
 data class PatientWithDoctorTable(
