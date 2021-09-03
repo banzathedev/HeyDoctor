@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.proway.heydocapp.R
 import com.proway.heydocapp.databinding.ItemListPatientBinding
-import com.proway.heydocapp.model.PatientsTable
 import com.proway.heydocapp.model.PatientsWithDoctors
 
 class AdapterPatient(val OnItemClick: (PatientsWithDoctors) -> Unit) :
