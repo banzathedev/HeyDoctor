@@ -35,6 +35,7 @@ class AdapterSpecialties(val OnItemClick: (SpecialtiesTable) -> Unit) :
 class SpecialtiesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     private var binding = ItemListSpecialtiesBinding.bind(itemView)
     fun bind(specialties: SpecialtiesTable){
+        binding.specialtiesTextViewList.text = specialties.name
 
     }
 }

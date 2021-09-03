@@ -14,7 +14,7 @@ import com.proway.heydocapp.model.SpecialtiesTable
 
 @Database(
     entities = [DoctorsTable::class, PatientsTable::class, SpecialtiesTable::class],
-    version = 1
+    version = 2
 )
 abstract class AppDataBase : RoomDatabase() {
     abstract fun getPatientDao(): PatientDao
@@ -28,6 +28,7 @@ abstract class AppDataBase : RoomDatabase() {
                 AppDataBase::class.java,
                 "heyDoc_app_db"
             )
+                .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build()
         }

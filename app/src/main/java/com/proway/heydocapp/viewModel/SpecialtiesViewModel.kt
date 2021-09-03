@@ -10,13 +10,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SpecialtiesViewModel @Inject constructor(private val specilatiesRepository: SpecialtiesRepository) :
+class SpecialtiesViewModel @Inject constructor(private val specialtiesRepository: SpecialtiesRepository) :
     ViewModel() {
     private val _addResponse = MutableLiveData<Boolean>()
     var addResponse: LiveData<Boolean> = _addResponse
 
     fun addSpecialties(specialties: SpecialtiesTable) {
-        specilatiesRepository.addSpecialties(specialties) {
+        specialtiesRepository.addSpecialties(specialties) {
 
         }
     }
@@ -25,7 +25,7 @@ class SpecialtiesViewModel @Inject constructor(private val specilatiesRepository
     var specialtiesResponse: LiveData<List<SpecialtiesTable>> = _specialtiesResponse
 
     fun getAllSpecialties() {
-        specilatiesRepository.getSpecialties() { foundSpecialties, e ->
+        specialtiesRepository.getSpecialties() { foundSpecialties, e ->
             _specialtiesResponse.value = foundSpecialties
         }
     }

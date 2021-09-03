@@ -15,7 +15,7 @@ class SpecialtiesDetailViewModel @Inject constructor(private val specilatiesRepo
     private val _editResponse = MutableLiveData<Boolean>()
     var editResponse: LiveData<Boolean> = _editResponse
 
-    fun editPatient(specialties: SpecialtiesTable) {
+    fun editSpecialties(specialties: SpecialtiesTable) {
         specilatiesRepository.addSpecialties(specialties) { resp ->
             _editResponse.value = resp
         }
@@ -24,7 +24,7 @@ class SpecialtiesDetailViewModel @Inject constructor(private val specilatiesRepo
     private val _deleteResponse = MutableLiveData<Boolean>()
     var deleteResponse: LiveData<Boolean> = _deleteResponse
 
-    fun deletePatient(specialties: SpecialtiesTable){
+    fun deleteSpecialties(specialties: SpecialtiesTable){
         specilatiesRepository.delete(specialties) { resp ->
             _deleteResponse.value = resp
         }

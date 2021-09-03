@@ -60,7 +60,7 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
           val age =  binding.patientAgeEditText.text.toString().toInt()
            val name = binding.patientNameEditText.text.toString()
             val sex =binding.patientSexEditText.text.toString()
-            val model = PatientsTable(null ,name = name, age = age, sex = sex, null)
+            val model = PatientsTable(name = name, age = age, sex = sex, doctorIdFk = null)
             viewModel.insertPatient(model)
             viewModel.getPatients()
         }
@@ -71,5 +71,6 @@ class PatientFragment : Fragment(R.layout.patient_fragment) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
     }
+
 
 }

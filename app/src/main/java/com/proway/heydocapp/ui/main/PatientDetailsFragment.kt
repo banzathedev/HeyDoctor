@@ -52,14 +52,17 @@ class PatientDetailsFragment : Fragment(R.layout.patient_details_fragment) {
             val name = binding.patientNameEditText.text.toString()
             val age = binding.patientAgeEditText.text.toString().toInt()
             val sex = binding.patientSexEditText.text.toString()
-            val model = PatientsTable(
-                id = patient?.patient?.id,
-                age = age,
-                name = name,
-                sex = sex,
-                doctorIdFk = patient?.patient?.doctorIdFk
-            )
-            viewModel.editPatient(model)
+            patient?.patient?.id?.let {
+                val model = PatientsTable(
+                    id = it,
+                    age = age,
+                    name = name,
+                    sex = sex,
+                    doctorIdFk = patient?.patient?.doctorIdFk
+                )
+                viewModel.editPatient(model)
+            }
+
         }
 
         binding.buttomDelete.setOnClickListener {

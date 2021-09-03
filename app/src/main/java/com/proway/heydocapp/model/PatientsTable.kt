@@ -5,9 +5,9 @@ import java.io.Serializable
 
 @Entity
 data class PatientsTable(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Patient_id")
-    val id: Int? = 0,
+    var id: Int = 0,
     @ColumnInfo(name = "Patient_name")
     val name: String,
     @ColumnInfo(name = "Patient_age")
