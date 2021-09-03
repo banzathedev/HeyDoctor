@@ -14,9 +14,9 @@ interface PatientDao {
     fun insertPatient(patientWithDoctor: PatientsWithDoctors) {
         if (patientWithDoctor.doctor != null) {
             patientWithDoctor.patient?.doctorIdFk = patientWithDoctor.doctor.id
-            patientWithDoctor?.let { insertPatient(it) }
+            patientWithDoctor.patient?.let { insertPatient(it) }
         } else {
-            patientWithDoctor?.let { insertPatient(it) }
+            patientWithDoctor.patient?.let { insertPatient(it) }
         }
     }
 
