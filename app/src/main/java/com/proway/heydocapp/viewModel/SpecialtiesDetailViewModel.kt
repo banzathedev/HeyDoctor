@@ -1,4 +1,4 @@
-package com.proway.heydocapp.ui.main
+package com.proway.heydocapp.viewModel
 
 import androidx.lifecycle.ViewModel
 
