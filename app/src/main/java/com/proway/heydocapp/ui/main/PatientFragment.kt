@@ -7,29 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.proway.heydocapp.R
+import com.proway.heydocapp.databinding.PatientFragmentBinding
 import com.proway.heydocapp.viewModel.PatientViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PatientFragment : Fragment() {
+class PatientFragment : Fragment(R.layout.patient_fragment) {
 
     companion object {
         fun newInstance() = PatientFragment()
     }
 
     private lateinit var viewModel: PatientViewModel
+    private lateinit var binding: PatientFragmentBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.patient_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(PatientViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding = PatientFragmentBinding.bind(view)
     }
 
 }
