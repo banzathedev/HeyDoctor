@@ -16,4 +16,9 @@ class SpecialtiesRepository @Inject constructor(private val database: AppDataBas
         database.getSpecialtiesDao().insertSpecialties(specialties)
         callback(true)
     }
+
+    fun delete(specialties: SpecialtiesTable, callback: (Boolean) -> Unit){
+        database.getSpecialtiesDao().deleteSpecialties(specialties)
+        callback(true)
+    }
 }
