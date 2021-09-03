@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.proway.heydocapp.R
+import com.proway.heydocapp.viewModel.AppointmentsViewModel
 
 class AppointmentsFragment : Fragment() {
 
