@@ -30,6 +30,6 @@ interface DoctorDAO {
     fun getDocWithSp(): List<DoctorWithSpecialties> //for now this guy its just for test
 
     @Delete
-    fun delete(doctor: DoctorsTable)
+    fun delete(doctor: DoctorWithSpecialties)
 
 }
