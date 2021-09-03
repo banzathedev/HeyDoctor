@@ -1,6 +1,7 @@
 package com.proway.heydocapp.model
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity
 data class DoctorsTable(
@@ -12,7 +13,7 @@ data class DoctorsTable(
 
 
     var specialtiesTableFK: Int
-)
+): Serializable
 
 
 data class DoctorWithSpecialties(
@@ -24,5 +25,5 @@ data class DoctorWithSpecialties(
     )
     val specialties: SpecialtiesTable?
 
-)
+): Serializable
  /* carai acho que consegui */

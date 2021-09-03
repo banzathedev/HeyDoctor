@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.proway.heydocapp.model.DoctorWithSpecialties
+import com.proway.heydocapp.model.DoctorsTable
 import com.proway.heydocapp.repositoy.DocRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -14,7 +15,7 @@ class DoctorsDetailViewModel @Inject constructor(private val doctorsRepository: 
     private val _editResponse = MutableLiveData<Boolean>()
     var editResponse: LiveData<Boolean> = _editResponse
 
-    fun editPatient(doctor: DoctorWithSpecialties) {
+    fun editDoctor(doctor: DoctorWithSpecialties) {
         doctorsRepository.addDoctor(doctor) { resp ->
             _editResponse.value = resp
         }
@@ -23,7 +24,7 @@ class DoctorsDetailViewModel @Inject constructor(private val doctorsRepository: 
     private val _deleteResponse = MutableLiveData<Boolean>()
     var deleteResponse: LiveData<Boolean> = _deleteResponse
 
-    fun deletePatient(doctor: DoctorWithSpecialties) {
+    fun deleteDoctor(doctor: DoctorsTable) {
         doctorsRepository.delete(doctor) { resp ->
             _deleteResponse.value = resp
         }

@@ -25,7 +25,7 @@ class DocRepository @Inject constructor(private val database: AppDataBase) {
         database.getDoctorsDao().insertDoctor(doctor)
         callback(true)
     }
-    fun delete(doctor: DoctorWithSpecialties, callback: (Boolean) -> Unit){
+    fun delete(doctor: DoctorsTable, callback: (Boolean) -> Unit){
         database.getDoctorsDao().delete(doctor)
         callback(true)
     }
