@@ -8,6 +8,9 @@ import com.proway.heydocapp.model.AppointmentsPojo
 @Dao
 interface AppointmentsDAO {
 
+    @Query("Select * from AppointMentsTable")
+    fun getAppointments(): List<AppointmentsPojo>
+
     @Transaction
     @Query("Select * from AppointMentsTable where apt_id = :id")
     fun fetchAppointments(id: Int): AppointmentsPojo
@@ -25,12 +28,12 @@ interface AppointmentsDAO {
     fun fetchBySex(sex: String): List<AppointmentsPojo>
 
     @Insert(onConflict = ABORT)
-    fun insert(list: List<AppointMentsTable>)
+    fun insertAppointment(appointments: AppointMentsTable)
 
     @Delete
-    fun delete(appointments: AppointMentsTable)
+    fun deleteAppointment(appointments: AppointMentsTable)
 
     @Update
-    fun update(appointments: AppointMentsTable)
+    fun updateAppointments(appointments: AppointMentsTable)
 
 }
