@@ -8,7 +8,9 @@ import com.google.android.material.navigation.NavigationBarView
 import com.proway.heydocapp.R
 import com.proway.heydocapp.databinding.MainActivityBinding
 import com.proway.heydocapp.utils.replaceView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding
 

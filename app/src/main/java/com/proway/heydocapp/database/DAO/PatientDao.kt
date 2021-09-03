@@ -30,7 +30,7 @@ interface PatientDao {
     fun getPatientsWithDoctor(): List<PatientsWithDoctors>
 
     @Delete
-    fun deleteDoctor(Patient: PatientsTable)
+    fun deletePatient(Patient: PatientsTable)
 
 }
 

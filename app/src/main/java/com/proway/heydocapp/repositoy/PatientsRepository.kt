@@ -13,15 +13,19 @@ class PatientsRepository @Inject constructor(private val database: AppDataBase) 
             } else callback(null, "Nenhum Paciente Encontrado")
 
         }
-        fun addPatient(doctor: PatientsTable, callback: (Boolean) -> Unit) {
-            database.getPatientDao().insertPatient(doctor)
-            callback(true)
-        }
+    }
+    fun addPatient(patient: PatientsTable, callback: (Boolean) -> Unit) {
+        database.getPatientDao().insertPatient(patient)
+        callback(true)
+    }
 
-        fun addPatientsWithDoctors(doctor: PatientsWithDoctors, callback: (Boolean) -> Unit) {
-            database.getPatientDao().insertPatient(doctor)
-            callback(true)
-        }
+    fun addPatientsWithDoctors(patient: PatientsWithDoctors, callback: (Boolean) -> Unit) {
+        database.getPatientDao().insertPatient(patient)
+        callback(true)
+    }
 
+    fun deletePatient(patient: PatientsTable, callback: (Boolean) -> Unit){
+        database.getPatientDao().deletePatient(patient)
+        callback(true)
     }
 }

@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.proway.heydocapp.R
 import com.proway.heydocapp.viewModel.PatientViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PatientFragment : Fragment() {
 
     companion object {
