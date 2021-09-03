@@ -17,7 +17,7 @@ data class AppointmentsPojo(
 
     @Relation(
         parentColumn = "patientFK",
-        entityColumn = "patPatient_id"
+        entityColumn = "Patient_id"
     )
     val patient: PatientsTable,
 

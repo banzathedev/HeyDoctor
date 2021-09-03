@@ -16,7 +16,7 @@ import com.proway.heydocapp.model.SpecialtiesTable
 
 @Database(
     entities = [DoctorsTable::class, PatientsTable::class, SpecialtiesTable::class, AppointMentsTable::class],
-    version = 2
+    version = 3
 )
 abstract class AppDataBase : RoomDatabase() {
     abstract fun getPatientDao(): PatientDao
