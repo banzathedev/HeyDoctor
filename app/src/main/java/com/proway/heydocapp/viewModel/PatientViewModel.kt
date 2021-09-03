@@ -15,7 +15,8 @@ class PatientViewModel @Inject constructor(private val patientsRepository: Patie
 
     private val _patientsResponse = MutableLiveData<List<PatientsWithDoctors>>()
     var patientsResponse: LiveData<List<PatientsWithDoctors>> = _patientsResponse
-    fun getPatients(callback: (List<PatientsTable>) -> Unit) {
+
+    fun getPatients() {
         patientsRepository.getPatients() { foundPatients, e ->
             _patientsResponse.value = foundPatients
         }
@@ -30,23 +31,6 @@ class PatientViewModel @Inject constructor(private val patientsRepository: Patie
         }
     }
 
-    private val _editResponse = MutableLiveData<Boolean>()
-    var editResponse: LiveData<Boolean> = _editResponse
-
-    fun editPatient(patient: PatientsTable) {
-        patientsRepository.addPatient(patient) { resp ->
-            _editResponse.value = resp
-        }
-    }
-
-    private val _deleteResponse = MutableLiveData<Boolean>()
-    var deleteResponse: LiveData<Boolean> = _deleteResponse
-
-    fun deletePatient(patient: PatientsTable) {
-        patientsRepository.deletePatient(patient) { resp ->
-            _deleteResponse.value = resp
-        }
-    }
 
 
 }

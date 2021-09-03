@@ -1,12 +1,13 @@
 package com.proway.heydocapp.model
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity
 data class PatientsTable(
     @PrimaryKey
     @ColumnInfo(name = "Patient_id")
-    val id: Int,
+    val id: Int? = 0,
     @ColumnInfo(name = "Patient_name")
     val name: String,
     @ColumnInfo(name = "Patient_age")
@@ -15,7 +16,7 @@ data class PatientsTable(
     val sex: String,
 
     @ColumnInfo(name = "doctorIdFk")
-    var doctorIdFk : Int
+    var doctorIdFk : Int?
 )
 
 data class PatientsWithDoctors(
@@ -27,4 +28,4 @@ data class PatientsWithDoctors(
     )
     val doctor: DoctorsTable?
 
-)
+): Serializable

@@ -29,6 +29,12 @@ class AdapterPatient(val OnItemClick: (PatientsWithDoctors) -> Unit) :
     }
 
     override fun getItemCount(): Int = listOfPatients.size
+
+    fun update(newlist: List<PatientsWithDoctors>) {
+        listOfPatients.clear()
+        listOfPatients.addAll(newlist)
+        notifyDataSetChanged()
+    }
 }
 
 class PatientViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
