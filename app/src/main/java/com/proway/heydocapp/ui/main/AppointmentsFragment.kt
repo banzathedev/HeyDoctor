@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.proway.heydocapp.R
 import com.proway.heydocapp.viewModel.AppointmentsViewModel
 
-class AppointmentsFragment : Fragment() {
+class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
 
     companion object {
         fun newInstance() = AppointmentsFragment()
@@ -17,17 +17,11 @@ class AppointmentsFragment : Fragment() {
 
     private lateinit var viewModel: AppointmentsViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.appointments_fragment, container, false)
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(AppointmentsViewModel::class.java)
-        // TODO: Use the ViewModel
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
 }
