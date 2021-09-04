@@ -14,6 +14,7 @@ import com.proway.heydocapp.R
 import com.proway.heydocapp.adapters.AdapterAppointments
 import com.proway.heydocapp.adapters.PatientViewHolder
 import com.proway.heydocapp.databinding.AppointmentsFragmentBinding
+import com.proway.heydocapp.emuns.Selecteds
 import com.proway.heydocapp.model.*
 import com.proway.heydocapp.utils.replaceView
 import com.proway.heydocapp.viewModel.AppointmentsViewModel
@@ -27,13 +28,14 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
     companion object {
         fun newInstance() = AppointmentsFragment()
     }
-   /* variables goes here*/
+
+    /* variables goes here*/
     private lateinit var viewModel: AppointmentsViewModel
     private lateinit var viewModelDoc: DoctorsViewModel
     private lateinit var viewModelPat: PatientViewModel
     private lateinit var binding: AppointmentsFragmentBinding
     private lateinit var recycler: RecyclerView
-    private  var adapter = AdapterAppointments(){
+    private var adapter = AdapterAppointments() {
         val args = Bundle()
         args.putSerializable("pojo", it)
         val fragment = AppointmentsDetailFragment.newInstance()
@@ -42,19 +44,29 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
 
 
     }
+
     /* observers goes here*/
-    private var observerGetAppointments= Observer<List<AppointmentsPojo>>{
+    private var observerGetAppointments = Observer<List<AppointmentsPojo>> {
         adapter.update(it)
     }
+    private var observerGetAppointmentsByDoc = Observer<List<AppointmentsPojo>> {
+        adapter.update(it)
+    }
+    private var observerGetAppointmentsByPatients = Observer<List<AppointmentsPojo>> {
+        adapter.update(it)
+    }
+
     private var observerDocs = Observer<List<DoctorWithSpecialties>> {
         val mutableIt = it.toMutableList()
         binding.spinnerDoctor.adapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_spinner_item, mutableIt)
+            requireContext(), android.R.layout.simple_spinner_item, mutableIt
+        )
     }
     private var observerPat = Observer<List<PatientsWithDoctors>> {
         val mutableIt = it.toMutableList()
         binding.spinnerPatient.adapter = ArrayAdapter(
-            requireContext(), android.R.layout.simple_spinner_item, mutableIt)
+            requireContext(), android.R.layout.simple_spinner_item, mutableIt
+        )
 
     }
 
@@ -68,6 +80,11 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
         viewModel.appointmentsResponse.observe(viewLifecycleOwner, observerGetAppointments)
         viewModelDoc.doctorsResponse.observe(viewLifecycleOwner, observerDocs)
         viewModelPat.patientsResponse.observe(viewLifecycleOwner, observerPat)
+        viewModel.appointmentsByDoc.observe(viewLifecycleOwner, observerGetAppointmentsByDoc)
+        viewModel.appointmentsByPatient.observe(
+            viewLifecycleOwner,
+            observerGetAppointmentsByPatients
+        )
 
         viewModel.getAppointments()
         viewModelDoc.getDoctors()
@@ -75,14 +92,46 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
 
         loadRecycler(view)
 
+        val listType = listOf<String>(
+            Selecteds.BY_DOC.name,
+            Selecteds.BY_PATIENT.name,
+            Selecteds.BY_ID.name
+        )
+
+        binding.spinnerFiltros.adapter = ArrayAdapter(
+            requireContext(), android.R.layout.simple_spinner_item,
+            listType
+        )
+
         binding.buttomSave.setOnClickListener {
             val selectedDoctor = binding.spinnerDoctor.selectedItem as DoctorWithSpecialties
             val selectedPat = binding.spinnerPatient.selectedItem as PatientsWithDoctors
-            val model = AppointMentsTable(patientFK = selectedPat.patient!!.id, doctorFK = selectedDoctor.doctor!!.id)
+            val model = AppointMentsTable(
+                patientFK = selectedPat.patient!!.id,
+                doctorFK = selectedDoctor.doctor!!.id
+            )
             viewModel.makeAppointment(model)
             viewModel.getAppointments()
         }
+        binding.buttonFilter.setOnClickListener{
+            val itemSelected = binding.spinnerFiltros.selectedItem
+            if (itemSelected.equals(Selecteds.BY_DOC)) {
+                val selectedDoc = binding.spinnerDoctor.selectedItem as DoctorWithSpecialties
+                selectedDoc.doctor?.let { it -> viewModel.getAppointmentsByDoc(it.name) }
+            }
+            if (itemSelected.equals(Selecteds.BY_PATIENT)) {
+                val selectedPat = binding.spinnerPatient as PatientsWithDoctors
+                selectedPat.patient?.let { it -> viewModel.getAppointmentsByPatient(it.name) }
+            }
+            if (itemSelected.equals(Selecteds.BY_ID)) {
+                viewModel.getAppointments()
+                TODO()
+            } else {
+                viewModel.getAppointments()
+            }
+        }
     }
+
     private fun loadRecycler(view: View) {
         recycler = binding.recyclerViewAppointments
         recycler.layoutManager = LinearLayoutManager(requireContext())
