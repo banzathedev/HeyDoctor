@@ -21,7 +21,9 @@ import com.proway.heydocapp.utils.replaceView
 import com.proway.heydocapp.viewModel.AppointmentsViewModel
 import com.proway.heydocapp.viewModel.DoctorsViewModel
 import com.proway.heydocapp.viewModel.PatientViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AppointmentsDetailFragment : Fragment(R.layout.appointments_detail_fragment) {
 
     companion object {
@@ -63,6 +65,8 @@ class AppointmentsDetailFragment : Fragment(R.layout.appointments_detail_fragmen
         super.onViewCreated(view, savedInstanceState)
         viewModelDoc.doctorsResponse.observe(viewLifecycleOwner, observerDocs)
         viewModelPat.patientsResponse.observe(viewLifecycleOwner, observerPat)
+        viewModelDoc.getDoctors()
+        viewModelPat.getPatients()
 
         binding.buttomEdit.setOnClickListener {
             val selectedDoctor = binding.spinnerDoctor.selectedItem as DoctorWithSpecialties
@@ -78,6 +82,9 @@ class AppointmentsDetailFragment : Fragment(R.layout.appointments_detail_fragmen
         }
         binding.buttomDelete.setOnClickListener {
             viewModel.delete(pojo!!.appointments)
+            viewModel.getAppointments()
+            requireActivity().replaceView(AppointmentsFragment())
+
         }
     }
 }
