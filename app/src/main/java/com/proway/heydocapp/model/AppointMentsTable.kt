@@ -1,6 +1,7 @@
 package com.proway.heydocapp.model
 
 import androidx.room.*
+import java.io.Serializable
 
 @Entity
 data class AppointMentsTable(
@@ -26,4 +27,4 @@ data class AppointmentsPojo(
         entityColumn = "Doctors_id"
     )
     val doctors: DoctorsTable
-)
+): Serializable

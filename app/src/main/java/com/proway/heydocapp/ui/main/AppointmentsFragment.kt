@@ -15,6 +15,7 @@ import com.proway.heydocapp.adapters.AdapterAppointments
 import com.proway.heydocapp.adapters.PatientViewHolder
 import com.proway.heydocapp.databinding.AppointmentsFragmentBinding
 import com.proway.heydocapp.model.*
+import com.proway.heydocapp.utils.replaceView
 import com.proway.heydocapp.viewModel.AppointmentsViewModel
 import com.proway.heydocapp.viewModel.DoctorsViewModel
 import com.proway.heydocapp.viewModel.PatientViewModel
@@ -33,6 +34,12 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
     private lateinit var binding: AppointmentsFragmentBinding
     private lateinit var recycler: RecyclerView
     private  var adapter = AdapterAppointments(){
+        val args = Bundle()
+        args.putSerializable("pojo", it)
+        val fragment = AppointmentsDetailFragment.newInstance()
+        fragment.arguments = args
+        requireActivity().replaceView(fragment)
+
 
     }
     /* observers goes here*/

@@ -65,5 +65,12 @@ class AppointmentsViewModel @Inject constructor(private val appointmentsReposito
         _updateResponse.value = true
     }
 
+    private val _deleteResponse = MutableLiveData<Boolean>()
+    var deleteResponse: LiveData<Boolean> = _deleteResponse
+
+    fun delete(appointment: AppointMentsTable){
+        appointmentsRepository.delete(appointment)
+    }
+
 
 }
