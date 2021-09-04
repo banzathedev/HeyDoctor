@@ -6,14 +6,18 @@ import java.io.Serializable
 @Entity
 data class DoctorsTable(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name= "Doctors_id")
-    var id : Int = 0,
-    @ColumnInfo(name= "Doctors_name")
+    @ColumnInfo(name = "Doctors_id")
+    var id: Int = 0,
+    @ColumnInfo(name = "Doctors_name")
     val name: String,
 
 
     var specialtiesTableFK: Int
-): Serializable
+) : Serializable {
+    override fun toString(): String {
+        return name
+    }
+}
 
 
 data class DoctorWithSpecialties(
@@ -25,5 +29,10 @@ data class DoctorWithSpecialties(
     )
     val specialties: SpecialtiesTable?
 
-): Serializable
- /* carai acho que consegui */
+) : Serializable {
+    override fun toString(): String {
+        return doctor!!.name
+
+    }
+}
+/* carai acho que consegui */

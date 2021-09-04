@@ -17,7 +17,11 @@ data class PatientsTable(
 
     @ColumnInfo(name = "doctorIdFk")
     var doctorIdFk : Int?
-)
+){
+    override fun toString(): String {
+        return name
+    }
+}
 
 data class PatientsWithDoctors(
     @Embedded
@@ -28,4 +32,8 @@ data class PatientsWithDoctors(
     )
     val doctor: DoctorsTable?
 
-): Serializable
+): Serializable{
+    override fun toString(): String {
+        return patient!!.name
+    }
+}
