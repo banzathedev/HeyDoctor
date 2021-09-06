@@ -14,7 +14,7 @@ data class AppointMentsTable(
 
 data class AppointmentsPojo(
     @Embedded
-    val appointments: AppointMentsTable,
+    val appointments: AppointMentsTable?,
 
     @Relation(
         parentColumn = "patientFK",
@@ -26,5 +26,5 @@ data class AppointmentsPojo(
         parentColumn = "doctorFK",
         entityColumn = "Doctors_id"
     )
-    val doctors: DoctorsTable
+    val doctors: DoctorsTable?
 ): Serializable

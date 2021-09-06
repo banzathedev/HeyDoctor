@@ -38,6 +38,6 @@ class AppointmentsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     private var binding = ItemListAppointmentsBinding.bind(itemView)
     fun Bind(appointments: AppointmentsPojo) {
         binding.patientNameTextView.text = "O paciente é :${appointments.patient.name}"
-        binding.doctorTextView.text ="O médico é : ${appointments.doctors.name}"
+        binding.doctorTextView.text ="O médico é : ${appointments.doctors?.name}"
     }
 }

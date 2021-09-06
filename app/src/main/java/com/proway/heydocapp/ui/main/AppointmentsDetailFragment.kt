@@ -72,7 +72,7 @@ class AppointmentsDetailFragment : Fragment(R.layout.appointments_detail_fragmen
             val selectedDoctor = binding.spinnerDoctor.selectedItem as DoctorWithSpecialties
             val selectedPat = binding.spinnerPatient.selectedItem as PatientsWithDoctors
             val model = AppointMentsTable(
-                id = pojo!!.appointments.id,
+                id = pojo!!.appointments!!.id,
                 patientFK = selectedPat.patient!!.id,
                 doctorFK = selectedDoctor.doctor!!.id
             )
@@ -81,7 +81,7 @@ class AppointmentsDetailFragment : Fragment(R.layout.appointments_detail_fragmen
             requireActivity().replaceView(AppointmentsFragment())
         }
         binding.buttomDelete.setOnClickListener {
-            viewModel.delete(pojo!!.appointments)
+            viewModel.delete(pojo!!.appointments!!)
             viewModel.getAppointments()
             requireActivity().replaceView(AppointmentsFragment())
 

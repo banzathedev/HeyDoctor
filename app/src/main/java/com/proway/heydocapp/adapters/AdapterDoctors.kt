@@ -38,8 +38,8 @@ class AdapterDoctors(val OnItemClick: (DoctorWithSpecialties) -> Unit) :
 class DoctorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private var binding = ItemListDoctorsBinding.bind(itemView)
     fun bind(doctors: DoctorWithSpecialties) {
-        binding.doctorNameTextView.text = doctors.doctor?.name
-        binding.doctorSpecialtiesTextView.text = doctors.specialties?.name
-
+        binding.doctorNameTextView.text = "Nome do médico: ${doctors.doctor?.name}"
+        binding.doctorSpecialtiesTextView.text =
+            "Especialidade do médico ${doctors.specialties?.name}"
     }
 }

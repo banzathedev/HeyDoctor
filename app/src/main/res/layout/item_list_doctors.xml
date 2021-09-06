@@ -7,6 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardListPatient"
+        android:backgroundTint="@color/light_gray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -22,6 +23,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+
                 android:id="@+id/patientPhoto"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
@@ -31,6 +33,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/doctorNameTextView" />
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/doctorNameTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -42,6 +45,7 @@
                 tools:text="Nome Paciente" />
 
             <TextView
+                android:textColor="@color/white"
                 android:id="@+id/doctorSpecialtiesTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
