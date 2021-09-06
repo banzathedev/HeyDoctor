@@ -113,21 +113,18 @@ class AppointmentsFragment : Fragment(R.layout.appointments_fragment) {
             viewModel.makeAppointment(model)
             viewModel.getAppointments()
         }
-        binding.buttonFilter.setOnClickListener{
+        binding.buttonFilter.setOnClickListener {
             val itemSelected = binding.spinnerFiltros.selectedItem
-            if (itemSelected.equals(Selecteds.BY_DOC)) {
+            if (itemSelected.equals("BY_DOC")) {
                 val selectedDoc = binding.spinnerDoctor.selectedItem as DoctorWithSpecialties
                 selectedDoc.doctor?.let { it -> viewModel.getAppointmentsByDoc(it.name) }
-            }
-            if (itemSelected.equals(Selecteds.BY_PATIENT)) {
-                val selectedPat = binding.spinnerPatient as PatientsWithDoctors
+            } else if (itemSelected.equals("BY_PATIENT")) {
+                val selectedPat = binding.spinnerPatient.selectedItem as PatientsWithDoctors
                 selectedPat.patient?.let { it -> viewModel.getAppointmentsByPatient(it.name) }
-            }
-            if (itemSelected.equals(Selecteds.BY_ID)) {
-                viewModel.getAppointments()
-                TODO()
+            } else if (itemSelected.equals(Selecteds.BY_ID)) {
+
             } else {
-                viewModel.getAppointments()
+
             }
         }
     }
