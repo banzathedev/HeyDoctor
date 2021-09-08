@@ -32,7 +32,7 @@ class AppointmentsDaoTest {
     fun setup() {
         database = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
-            database::class.java
+            AppDataBase::class.java
         ).allowMainThreadQueries().build()
         daoAppointments = database.getAppointmentsDao()
         daoPatient = database.getPatientDao()
